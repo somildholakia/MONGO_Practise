@@ -30,9 +30,6 @@ User.insertMany([
 })
 
 
-
-
-
 // const user2 = new User({
 //     name: "somil123",
 //     email: "abc@gmawwwil.com",
