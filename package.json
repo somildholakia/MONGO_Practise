@@ -6,11 +6,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somildholakia/MONGO_Practise.git"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Somil",
   "license": "ISC",
   "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/somildholakia/MONGO_Practise/issues"
+  },
+  "homepage": "https://github.com/somildholakia/MONGO_Practise#readme",
   "dependencies": {
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "mongodb": "^7.0.0",
     "mongoose": "^9.1.4"
   }
 }

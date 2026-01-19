@@ -1,43 +1,34 @@
+const express = require("express");
+const app = express();
+const path = require("path");
 const mongoose = require("mongoose");
 
-
 main()
-    .then(() => {
-        console.log("connection successful");
+    .then(res => {
+        console.log("Connection successful")
     })
-    .catch((err) => console.log(err));
+    .catch(err => {
+        console.log(err);
+    })
 
 async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/test")
+    await mongoose.connect("mongodb://127.0.0.1:27017/test");
 }
 
-const userSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    age: Number,
-});
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
-const User = mongoose.model("User", userSchema);
 
-User.insertMany([
-    {name: "ritik", email: "riitk@gmail.com", age: 50},
-    {name: "bruce", email: "bruce@gmail.com", age: 2},
-    {name: "krishna", email: "krishna@gmail.com", age: 500},
-]).then((res) => {
-    console.log(res);
-}).catch(err => {
-    console.log(err);
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname,"views"));
+app.use(express.static(path.join(__dirname,"public")));
+
+const port = 8080;
+
+app.listen(port,() => {
+    console.log(`Listening at port: ${port}`)
 })
 
-
-// const user2 = new User({
-//     name: "somil123",
-//     email: "abc@gmawwwil.com",
-//     age: 199,
-// });
-
-// user2.save().then((res) => {
-//     console.log(res);
-// }).catch(err => {
-//     console.log(err)
-// });
+app.get("/",(req,res) => {
+    res.send("Server working");
+})
