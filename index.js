@@ -20,17 +20,6 @@ async function main(){
 }
 
 
-let chat1 = new Chat({
-    from: "somil",
-    to: "ritik",
-    message: "Send the notes bro",
-    created: new Date(),
-});
-
-chat1.save().then((res) => {
-    console.log(res);
-});
-
 const port = 8080;
 
 app.use(express.urlencoded({extended: true}));
