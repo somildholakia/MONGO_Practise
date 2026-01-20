@@ -7,9 +7,12 @@ body{
     background-color: rgb(175, 216, 253);
     border-radius: 16px;
     display: inline-block;
+    font-style: italic;
 }
 
 .msg {
     background-color: dodgerblue;
     color: white;
+    padding: 5px 15px;
+    font-style: italic;
 }
