@@ -30,8 +30,6 @@ chat1.save().then(res => {
 });
 
 
-
-
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
