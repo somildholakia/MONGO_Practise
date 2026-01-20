@@ -34,3 +34,9 @@ app.use(express.static(path.join(__dirname,"public")));
 app.listen(port, () => {
     console.log(`Listening at port:${port}`);
 })
+
+app.get("/chats", async (req,res) => {
+    let chats = await Chat.find();
+    console.log(chats);
+    res.render("index.ejs",{chats});
+})
