@@ -6,7 +6,7 @@ const Chat = require("./models/chat.js");
 
 
 main()
-    .then(res => {
+    .then(() => {
         console.log("connection Successful");
     })
     .catch(err => {
@@ -15,11 +15,21 @@ main()
 
 
 
-
-
 async function main(){
-  await mongoose.connect("mongodb:127.0.0.1:27017/whatsapp");
+  await mongoose.connect("mongodb://127.0.0.1:27017/whatsapp");
 }
+
+
+let chat1 = new Chat({
+    from: "somil",
+    to: "ritik",
+    message: "Send the notes bro",
+    created: new Date(),
+});
+
+chat1.save().then((res) => {
+    console.log(res);
+});
 
 const port = 8080;
 
