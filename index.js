@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const mongoose = require("mongoose");
 const Chat = require("./models/chat.js");
+const methodOverride = require("method-override");
 
 
 main()
@@ -24,6 +25,7 @@ const port = 8080;
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(methodOverride("_method"));
 
 
 app.set("view engine", "ejs");
@@ -37,7 +39,7 @@ app.listen(port, () => {
 
 app.get("/chats", async (req,res) => {
     let chats = await Chat.find();
-    console.log(chats);
+    // console.log(chats);
     res.render("index.ejs",{chats});
 })
 
@@ -70,8 +72,9 @@ app.get("/chats/:id/edit", async (req,res) => {
 
 app.put("/chats/:id", async (req,res) => {
     let {id} = req.params;
-    let {newMsg} = req.body;
-    let updatedChat = await Chat.findByIdAndUpdate(id,{msg: newMsg}, {runValidators: true, new: true});
+    let {msg}  = req.body;
+    console.log(msg);
+    let updatedChat = await Chat.findByIdAndUpdate(id,{msg: msg}, {runValidators: true, new: true});
     console.log(updatedChat);
     res.redirect("/chats");
 })
