@@ -32,7 +32,8 @@
             <p> Recieved By: <%= chat.to %>
             </p>
             <hr>
-            <p> <%= chat.created  %> </p>
+            <p> <%= chat.created.toString().split(" ")[4]  %> </p>
+            <p> <%= chat.created.toString().split(" ").slice(0,4).join(" ") %> </p>
         </diV>
 
         <br><br>
